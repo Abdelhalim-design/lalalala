@@ -4,30 +4,30 @@ site_name: "Portfolio"
 
 nav:
   - Accueil:
-      - A propos de moi: index.md
-      - Sommaire: Somaires.md
-  - Référentiel des Compétences: referenciel.md
+      - A propos de moi: index.html
+      - Sommaire: Somaires.html
+  - Référentiel des Compétences: referenciel.html
   - 📚 Projet :
       - 📌 Semestre 1:
           - 💧 Station de pompage:
-              - Concevoir: concevoir_station_pompage.md
-              - Vérifier: verifier_station_pompage.md
+              - Concevoir: concevoir_station_pompage.html
+              - Vérifier: verifier_station_pompage.html
           - 🤖 Robot Suiveur de Ligne:
-              - Concevoir: concevoir_robot_suiveur.md
-              - Vérifier: verifier_robot_suiveur.md
+              - Concevoir: concevoir_robot_suiveur.html
+              - Vérifier: verifier_robot_suiveur.html
       - 🏅 Semestre 2:
           - 📖 Moteur de drone:
-              - Concevoir: concevoir_moteur_drone.md
-              - Vérifier: verifier_moteur_drone.md
+              - Concevoir: concevoir_moteur_drone.html
+              - Vérifier: verifier_moteur_drone.html
           - 🎨 Snake:
-              - Concevoir: concevoir_sae_snake.md
-              - Vérifier: verifier_sae_snake.md
+              - Concevoir: concevoir_sae_snake.html
+              - Vérifier: verifier_sae_snake.html
   - Mon experience personnel: 
       - 📂 Projets et Compétences:
-          - 🏆 Projets en paralle: projet_realiser.md
-          - 🔧 Compétences: competence_aquise.md
+          - 🏆 Projets en paralle: projet_realiser.html
+          - 🔧 Compétences: competence_aquise.html
                       
-  - 📞 Contact: contact.md
+  - 📞 Contact: contact.html
 
 
 site_name: "Portfolio - Abdelhalim Zouggagh"
