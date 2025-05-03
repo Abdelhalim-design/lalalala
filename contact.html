@@ -1,124 +1,155 @@
-# 📞 Contact
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>📞 Contact</title>
+  <link rel="stylesheet" href="extra.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+      line-height: 1.6;
+      background-color: white;
+      color: #222;
+    }
+    h2 {
+      color: #005577;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .cv-container {
+      background: #f3f3f3;
+      padding: 20px;
+      margin-top: 40px;
+      border-radius: 10px;
+    }
+    .cv-section {
+      margin-top: 20px;
+    }
+    button a {
+      color: white;
+      background-color: #007acc;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 15px;
+    }
+    button a:hover {
+      background-color: #005fa3;
+    }
+    #circuitCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background: white;
+    }
+  </style>
+</head>
+<body>
 
-## 📧 Email
-✉️ Tu peux me contacter par email : [monemail@example.com](mailto:monemail@example.com)
+  <h1>📞 Contact</h1>
 
-## 🔗 LinkedIn
-🔗 Retrouve-moi sur [LinkedIn](https://www.linkedin.com/in/monprofil)
+  <h2>📧 Email</h2>
+  ✉️ Tu peux me contacter par email : 
+  <a href="mailto:monemail@example.com">monemail@example.com</a>
 
-## 🏫 Adresse
-📍 Mon adresse :  
-123 Rue de l'IUT, 30000 Nîmes, France
+  <h2>🔗 LinkedIn</h2>
+  🔗 Retrouve-moi sur 
+  <a href="https://www.linkedin.com/in/monprofil" target="_blank">LinkedIn</a>
 
-## 📱 Téléphone
-📞 +33 7 81 23 30 35
+  <h2>🏫 Adresse</h2>
+  📍 123 Rue de l'IUT, 30000 Nîmes, France
 
----
+  <h2>📱 Téléphone</h2>
+  📞 +33 7 81 23 30 35
 
-## 📝 Formulaire de Contact (si activé)
-Si ton site est hébergé avec GitHub Pages, **MkDocs n'accepte pas les formulaires de base**.  
-Tu peux utiliser [Formspree](https://formspree.io/) pour ajouter un **formulaire de contact**.
+  <hr>
 
+  <h2>📝 Formulaire de Contact (si activé)</h2>
+  <p>Si ton site est hébergé avec GitHub Pages, <strong>MkDocs n'accepte pas les formulaires HTML classiques</strong>.<br>
+  Utilise un service comme <a href="https://formspree.io/" target="_blank">Formspree</a> pour ajouter un formulaire de contact.</p>
 
-<canvas id="circuitCanvas"></canvas>
-<script>
-const canvas = document.getElementById("circuitCanvas");
-const ctx = canvas.getContext("2d");
+  <canvas id="circuitCanvas"></canvas>
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+  <div class="cv-container">
+    <h2>📄 Mon CV</h2>
+    <ul>
+      <li><a href="#experience1">Expérience 1</a></li>
+      <li><a href="#experience2">Expérience 2</a></li>
+      <li><a href="#formation">Formation</a></li>
+    </ul>
 
-const nodes = [];
-for (let i = 0; i < 50; i++) {
-    nodes.push({
+    <div id="experience1" class="cv-section">
+      <h3>🛠️ Poste 1</h3>
+      <p>Description de l'expérience professionnelle 1...</p>
+    </div>
+    <div id="experience2" class="cv-section">
+      <h3>🛠️ Poste 2</h3>
+      <p>Description de l'expérience professionnelle 2...</p>
+    </div>
+    <div id="formation" class="cv-section">
+      <h3>🎓 Formation</h3>
+      <p>Détails de ta formation académique...</p>
+    </div>
+
+    <button><a href="cv.pdf" download>Télécharger mon CV</a></button>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("circuitCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const nodes = [];
+    for (let i = 0; i < 50; i++) {
+      nodes.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         dx: (Math.random() - 0.5) * 2,
         dy: (Math.random() - 0.5) * 2
-    });
-}
+      });
+    }
 
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "rgba(0, 255, 100, 0.8)";
-    
-    nodes.forEach(node => {
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "rgba(0, 255, 100, 0.8)";
+
+      nodes.forEach(node => {
         node.x += node.dx;
         node.y += node.dy;
-        
+
         if (node.x < 0 || node.x > canvas.width) node.dx *= -1;
         if (node.y < 0 || node.y > canvas.height) node.dy *= -1;
 
         ctx.beginPath();
         ctx.arc(node.x, node.y, 3, 0, Math.PI * 2);
         ctx.fill();
-        
+
         nodes.forEach(other => {
-            const dist = Math.hypot(node.x - other.x, node.y - other.y);
-            if (dist < 100) {
-                ctx.strokeStyle = `rgba(0, 255, 100, ${1 - dist / 100})`;
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.moveTo(node.x, node.y);
-                ctx.lineTo(other.x, other.y);
-                ctx.stroke();
-            }
+          const dist = Math.hypot(node.x - other.x, node.y - other.y);
+          if (dist < 100) {
+            ctx.strokeStyle = `rgba(0, 255, 100, ${1 - dist / 100})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(node.x, node.y);
+            ctx.lineTo(other.x, other.y);
+            ctx.stroke();
+          }
         });
-    });
-    requestAnimationFrame(draw);
-}
-draw();
-</script>
-<style>
-#circuitCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: white;
-}
-</style>
-
-<div class="cv-container">
-    <h2>Mon CV</h2>
-    <ul>
-        <li>
-            <a href="#experience1">Expérience 1</a>
-        </li>
-        <li>
-            <a href="#experience2">Expérience 2</a>
-        </li>
-        <li>
-            <a href="#formation">Formation</a>
-        </li>
-    </ul>
-
-    <div id="experience1" class="cv-section">
-        <h3>Poste 1</h3>
-        <p>Description de l'expérience professionnelle 1...</p>
-    </div>
-    <div id="experience2" class="cv-section">
-        <h3>Poste 2</h3>
-        <p>Description de l'expérience professionnelle 2...</p>
-    </div>
-    <div id="formation" class="cv-section">
-        <h3>Formation</h3>
-        <p>Détails de ta formation académique...</p>
-    </div>
-
-    <button><a href="cv.pdf" download>Télécharger mon CV</a></button>
-</div>
-
-<style>
-    .cv-container {
-        padding: 20px;
+      });
+      requestAnimationFrame(draw);
     }
-    .cv-section {
-        margin-top: 20px;
-    }
-    a {
-        text-decoration: none;
-    }
-</style>
+    draw();
+  </script>
+
+</body>
+</html>
